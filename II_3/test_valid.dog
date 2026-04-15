@@ -1,0 +1,22 @@
+DOG Rex {
+    TREAT bones = 5;
+    TREAT energy = 10;
+
+    BARK bones;
+    BARK energy;
+
+    CHASE (bones < 8) {
+        bones = bones + 1;
+        BARK bones;
+    }
+
+    IF (energy > 5) {
+        HOWL energy;
+    }
+
+    REPEAT 3 TIMES {
+        BARK bones;
+    }
+
+    SIT;
+}

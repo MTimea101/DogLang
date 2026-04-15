@@ -1,0 +1,14 @@
+DOG Buddy {
+    TREAT bones = 5;
+
+    // Hiba: hiányzó pontosvessző
+    BARK bones
+
+    // Hiba: hibás kifejezés
+    bones = + 10;
+
+    // Hiba: hiányzó zárójel
+    CHASE (bones < 10 {
+        BARK bones;
+    }
+}

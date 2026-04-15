@@ -1,0 +1,17 @@
+DOG Fibonacci {
+    TREAT n = 10;
+    TREAT a = 0;
+    TREAT b = 1;
+    TREAT temp;
+    TREAT i = 0;
+    
+    BARK a;
+    BARK b;
+    
+    REPEAT n TIMES {
+        temp = a + b;
+        a = b;
+        b = temp;
+        BARK temp;
+    }
+}

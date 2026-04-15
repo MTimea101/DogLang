@@ -1,0 +1,14 @@
+DOG Buddy {
+    TREAT bones = 5;
+
+    // hianyzo pontosvesszo
+    BARK bones
+
+    // hibas kifejezes
+    bones = + 10;
+
+    // hianyzo zarojel
+    CHASE (bones < 10 {
+        BARK bones;
+    }
+}

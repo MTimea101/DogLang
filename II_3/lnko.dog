@@ -1,0 +1,16 @@
+DOG GCD {
+    TREAT a = 48;
+    TREAT b = 18;
+    TREAT temp;
+    
+    BARK a;
+    BARK b;
+    
+    CHASE (b != 0) {
+        temp = a % b;
+        a = b;
+        b = temp;
+    }
+    
+    HOWL a;
+}

@@ -1,0 +1,1393 @@
+Terminals which are not used
+
+   ERROR
+
+
+State 5 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 @1: /* empty */
+
+    2 program: DOG ID LBRACE @1 statement_list RBRACE
+    3        | DOG ID LBRACE error RBRACE
+
+    4 statement_list: /* empty */
+    5               | statement_list statement
+
+    6 statement: declaration
+    7          | assignment
+    8          | print_stmt
+    9          | error_stmt
+   10          | wait_stmt
+   11          | loop_stmt
+   12          | repeat_stmt
+   13          | if_stmt
+   14          | error SEMICOLON
+
+   15 declaration: TREAT ID ASSIGN expression SEMICOLON
+   16            | TREAT ID SEMICOLON
+
+   17 assignment: ID ASSIGN expression SEMICOLON
+
+   18 print_stmt: BARK expression SEMICOLON
+
+   19 error_stmt: HOWL expression SEMICOLON
+
+   20 wait_stmt: SIT SEMICOLON
+
+   21 @2: /* empty */
+
+   22 loop_stmt: CHASE LPAREN expression RPAREN @2 LBRACE statement_list RBRACE
+
+   23 @3: /* empty */
+
+   24 repeat_stmt: REPEAT expression TIMES @3 LBRACE statement_list RBRACE
+
+   25 @4: /* empty */
+
+   26 if_stmt: IF LPAREN expression RPAREN LBRACE @4 statement_list RBRACE else_part
+
+   27 else_part: /* empty */
+
+   28 @5: /* empty */
+
+   29 else_part: ELSE LBRACE @5 statement_list RBRACE
+
+   30 expression: NUMBER
+   31           | ID
+   32           | expression PLUS expression
+   33           | expression MINUS expression
+   34           | expression MULT expression
+   35           | expression DIV expression
+   36           | expression MOD expression
+   37           | expression EQ expression
+   38           | expression NE expression
+   39           | expression LT expression
+   40           | expression GT expression
+   41           | expression LE expression
+   42           | expression GE expression
+   43           | LPAREN expression RPAREN
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256) 3 14
+DOG (258) 2 3
+TREAT (259) 15 16
+BARK (260) 18
+HOWL (261) 19
+SIT (262) 20
+CHASE (263) 22
+REPEAT (264) 24
+TIMES (265) 24
+IF (266) 26
+ELSE (267) 29
+LPAREN (268) 22 26 43
+RPAREN (269) 22 26 43
+LBRACE (270) 2 3 22 24 26 29
+RBRACE (271) 2 3 22 24 26 29
+SEMICOLON (272) 14 15 16 17 18 19 20
+ASSIGN (273) 15 17
+PLUS (274) 32
+MINUS (275) 33
+MULT (276) 34
+DIV (277) 35
+MOD (278) 36
+EQ (279) 37
+NE (280) 38
+LT (281) 39
+GT (282) 40
+LE (283) 41
+GE (284) 42
+ID (285) 2 3 15 16 17 31
+NUMBER (286) 30
+ERROR (287)
+
+
+Nonterminals, with rules where they appear
+
+$accept (33)
+    on left: 0
+program (34)
+    on left: 2 3, on right: 0
+@1 (35)
+    on left: 1, on right: 2
+statement_list (36)
+    on left: 4 5, on right: 2 5 22 24 26 29
+statement (37)
+    on left: 6 7 8 9 10 11 12 13 14, on right: 5
+declaration (38)
+    on left: 15 16, on right: 6
+assignment (39)
+    on left: 17, on right: 7
+print_stmt (40)
+    on left: 18, on right: 8
+error_stmt (41)
+    on left: 19, on right: 9
+wait_stmt (42)
+    on left: 20, on right: 10
+loop_stmt (43)
+    on left: 22, on right: 11
+@2 (44)
+    on left: 21, on right: 22
+repeat_stmt (45)
+    on left: 24, on right: 12
+@3 (46)
+    on left: 23, on right: 24
+if_stmt (47)
+    on left: 26, on right: 13
+@4 (48)
+    on left: 25, on right: 26
+else_part (49)
+    on left: 27 29, on right: 26
+@5 (50)
+    on left: 28, on right: 29
+expression (51)
+    on left: 30 31 32 33 34 35 36 37 38 39 40 41 42 43,
+    on right: 15 17 18 19 22 24 26 32 33 34 35 36 37 38 39 40 41 42
+    43
+
+
+state 0
+
+    0 $accept: . program $end
+
+    DOG  shift, and go to state 1
+
+    program  go to state 2
+
+
+state 1
+
+    2 program: DOG . ID LBRACE @1 statement_list RBRACE
+    3        | DOG . ID LBRACE error RBRACE
+
+    ID  shift, and go to state 3
+
+
+state 2
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 4
+
+
+state 3
+
+    2 program: DOG ID . LBRACE @1 statement_list RBRACE
+    3        | DOG ID . LBRACE error RBRACE
+
+    LBRACE  shift, and go to state 5
+
+
+state 4
+
+    0 $accept: program $end .
+
+    $default  accept
+
+
+state 5
+
+    2 program: DOG ID LBRACE . @1 statement_list RBRACE
+    3        | DOG ID LBRACE . error RBRACE
+
+    error  shift, and go to state 6
+
+    error   [reduce using rule 1 (@1)]
+    TREAT   reduce using rule 1 (@1)
+    BARK    reduce using rule 1 (@1)
+    HOWL    reduce using rule 1 (@1)
+    SIT     reduce using rule 1 (@1)
+    CHASE   reduce using rule 1 (@1)
+    REPEAT  reduce using rule 1 (@1)
+    IF      reduce using rule 1 (@1)
+    RBRACE  reduce using rule 1 (@1)
+    ID      reduce using rule 1 (@1)
+
+    @1  go to state 7
+
+
+state 6
+
+    3 program: DOG ID LBRACE error . RBRACE
+
+    RBRACE  shift, and go to state 8
+
+
+state 7
+
+    2 program: DOG ID LBRACE @1 . statement_list RBRACE
+
+    $default  reduce using rule 4 (statement_list)
+
+    statement_list  go to state 9
+
+
+state 8
+
+    3 program: DOG ID LBRACE error RBRACE .
+
+    $default  reduce using rule 3 (program)
+
+
+state 9
+
+    2 program: DOG ID LBRACE @1 statement_list . RBRACE
+    5 statement_list: statement_list . statement
+
+    error   shift, and go to state 10
+    TREAT   shift, and go to state 11
+    BARK    shift, and go to state 12
+    HOWL    shift, and go to state 13
+    SIT     shift, and go to state 14
+    CHASE   shift, and go to state 15
+    REPEAT  shift, and go to state 16
+    IF      shift, and go to state 17
+    RBRACE  shift, and go to state 18
+    ID      shift, and go to state 19
+
+    statement    go to state 20
+    declaration  go to state 21
+    assignment   go to state 22
+    print_stmt   go to state 23
+    error_stmt   go to state 24
+    wait_stmt    go to state 25
+    loop_stmt    go to state 26
+    repeat_stmt  go to state 27
+    if_stmt      go to state 28
+
+
+state 10
+
+   14 statement: error . SEMICOLON
+
+    SEMICOLON  shift, and go to state 29
+
+
+state 11
+
+   15 declaration: TREAT . ID ASSIGN expression SEMICOLON
+   16            | TREAT . ID SEMICOLON
+
+    ID  shift, and go to state 30
+
+
+state 12
+
+   18 print_stmt: BARK . expression SEMICOLON
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 34
+
+
+state 13
+
+   19 error_stmt: HOWL . expression SEMICOLON
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 35
+
+
+state 14
+
+   20 wait_stmt: SIT . SEMICOLON
+
+    SEMICOLON  shift, and go to state 36
+
+
+state 15
+
+   22 loop_stmt: CHASE . LPAREN expression RPAREN @2 LBRACE statement_list RBRACE
+
+    LPAREN  shift, and go to state 37
+
+
+state 16
+
+   24 repeat_stmt: REPEAT . expression TIMES @3 LBRACE statement_list RBRACE
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 38
+
+
+state 17
+
+   26 if_stmt: IF . LPAREN expression RPAREN LBRACE @4 statement_list RBRACE else_part
+
+    LPAREN  shift, and go to state 39
+
+
+state 18
+
+    2 program: DOG ID LBRACE @1 statement_list RBRACE .
+
+    $default  reduce using rule 2 (program)
+
+
+state 19
+
+   17 assignment: ID . ASSIGN expression SEMICOLON
+
+    ASSIGN  shift, and go to state 40
+
+
+state 20
+
+    5 statement_list: statement_list statement .
+
+    $default  reduce using rule 5 (statement_list)
+
+
+state 21
+
+    6 statement: declaration .
+
+    $default  reduce using rule 6 (statement)
+
+
+state 22
+
+    7 statement: assignment .
+
+    $default  reduce using rule 7 (statement)
+
+
+state 23
+
+    8 statement: print_stmt .
+
+    $default  reduce using rule 8 (statement)
+
+
+state 24
+
+    9 statement: error_stmt .
+
+    $default  reduce using rule 9 (statement)
+
+
+state 25
+
+   10 statement: wait_stmt .
+
+    $default  reduce using rule 10 (statement)
+
+
+state 26
+
+   11 statement: loop_stmt .
+
+    $default  reduce using rule 11 (statement)
+
+
+state 27
+
+   12 statement: repeat_stmt .
+
+    $default  reduce using rule 12 (statement)
+
+
+state 28
+
+   13 statement: if_stmt .
+
+    $default  reduce using rule 13 (statement)
+
+
+state 29
+
+   14 statement: error SEMICOLON .
+
+    $default  reduce using rule 14 (statement)
+
+
+state 30
+
+   15 declaration: TREAT ID . ASSIGN expression SEMICOLON
+   16            | TREAT ID . SEMICOLON
+
+    SEMICOLON  shift, and go to state 41
+    ASSIGN     shift, and go to state 42
+
+
+state 31
+
+   43 expression: LPAREN . expression RPAREN
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 43
+
+
+state 32
+
+   31 expression: ID .
+
+    $default  reduce using rule 31 (expression)
+
+
+state 33
+
+   30 expression: NUMBER .
+
+    $default  reduce using rule 30 (expression)
+
+
+state 34
+
+   18 print_stmt: BARK expression . SEMICOLON
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    SEMICOLON  shift, and go to state 44
+    PLUS       shift, and go to state 45
+    MINUS      shift, and go to state 46
+    MULT       shift, and go to state 47
+    DIV        shift, and go to state 48
+    MOD        shift, and go to state 49
+    EQ         shift, and go to state 50
+    NE         shift, and go to state 51
+    LT         shift, and go to state 52
+    GT         shift, and go to state 53
+    LE         shift, and go to state 54
+    GE         shift, and go to state 55
+
+
+state 35
+
+   19 error_stmt: HOWL expression . SEMICOLON
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    SEMICOLON  shift, and go to state 56
+    PLUS       shift, and go to state 45
+    MINUS      shift, and go to state 46
+    MULT       shift, and go to state 47
+    DIV        shift, and go to state 48
+    MOD        shift, and go to state 49
+    EQ         shift, and go to state 50
+    NE         shift, and go to state 51
+    LT         shift, and go to state 52
+    GT         shift, and go to state 53
+    LE         shift, and go to state 54
+    GE         shift, and go to state 55
+
+
+state 36
+
+   20 wait_stmt: SIT SEMICOLON .
+
+    $default  reduce using rule 20 (wait_stmt)
+
+
+state 37
+
+   22 loop_stmt: CHASE LPAREN . expression RPAREN @2 LBRACE statement_list RBRACE
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 57
+
+
+state 38
+
+   24 repeat_stmt: REPEAT expression . TIMES @3 LBRACE statement_list RBRACE
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    TIMES  shift, and go to state 58
+    PLUS   shift, and go to state 45
+    MINUS  shift, and go to state 46
+    MULT   shift, and go to state 47
+    DIV    shift, and go to state 48
+    MOD    shift, and go to state 49
+    EQ     shift, and go to state 50
+    NE     shift, and go to state 51
+    LT     shift, and go to state 52
+    GT     shift, and go to state 53
+    LE     shift, and go to state 54
+    GE     shift, and go to state 55
+
+
+state 39
+
+   26 if_stmt: IF LPAREN . expression RPAREN LBRACE @4 statement_list RBRACE else_part
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 59
+
+
+state 40
+
+   17 assignment: ID ASSIGN . expression SEMICOLON
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 60
+
+
+state 41
+
+   16 declaration: TREAT ID SEMICOLON .
+
+    $default  reduce using rule 16 (declaration)
+
+
+state 42
+
+   15 declaration: TREAT ID ASSIGN . expression SEMICOLON
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 61
+
+
+state 43
+
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+   43           | LPAREN expression . RPAREN
+
+    RPAREN  shift, and go to state 62
+    PLUS    shift, and go to state 45
+    MINUS   shift, and go to state 46
+    MULT    shift, and go to state 47
+    DIV     shift, and go to state 48
+    MOD     shift, and go to state 49
+    EQ      shift, and go to state 50
+    NE      shift, and go to state 51
+    LT      shift, and go to state 52
+    GT      shift, and go to state 53
+    LE      shift, and go to state 54
+    GE      shift, and go to state 55
+
+
+state 44
+
+   18 print_stmt: BARK expression SEMICOLON .
+
+    $default  reduce using rule 18 (print_stmt)
+
+
+state 45
+
+   32 expression: expression PLUS . expression
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 63
+
+
+state 46
+
+   33 expression: expression MINUS . expression
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 64
+
+
+state 47
+
+   34 expression: expression MULT . expression
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 65
+
+
+state 48
+
+   35 expression: expression DIV . expression
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 66
+
+
+state 49
+
+   36 expression: expression MOD . expression
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 67
+
+
+state 50
+
+   37 expression: expression EQ . expression
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 68
+
+
+state 51
+
+   38 expression: expression NE . expression
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 69
+
+
+state 52
+
+   39 expression: expression LT . expression
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 70
+
+
+state 53
+
+   40 expression: expression GT . expression
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 71
+
+
+state 54
+
+   41 expression: expression LE . expression
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 72
+
+
+state 55
+
+   42 expression: expression GE . expression
+
+    LPAREN  shift, and go to state 31
+    ID      shift, and go to state 32
+    NUMBER  shift, and go to state 33
+
+    expression  go to state 73
+
+
+state 56
+
+   19 error_stmt: HOWL expression SEMICOLON .
+
+    $default  reduce using rule 19 (error_stmt)
+
+
+state 57
+
+   22 loop_stmt: CHASE LPAREN expression . RPAREN @2 LBRACE statement_list RBRACE
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    RPAREN  shift, and go to state 74
+    PLUS    shift, and go to state 45
+    MINUS   shift, and go to state 46
+    MULT    shift, and go to state 47
+    DIV     shift, and go to state 48
+    MOD     shift, and go to state 49
+    EQ      shift, and go to state 50
+    NE      shift, and go to state 51
+    LT      shift, and go to state 52
+    GT      shift, and go to state 53
+    LE      shift, and go to state 54
+    GE      shift, and go to state 55
+
+
+state 58
+
+   24 repeat_stmt: REPEAT expression TIMES . @3 LBRACE statement_list RBRACE
+
+    $default  reduce using rule 23 (@3)
+
+    @3  go to state 75
+
+
+state 59
+
+   26 if_stmt: IF LPAREN expression . RPAREN LBRACE @4 statement_list RBRACE else_part
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    RPAREN  shift, and go to state 76
+    PLUS    shift, and go to state 45
+    MINUS   shift, and go to state 46
+    MULT    shift, and go to state 47
+    DIV     shift, and go to state 48
+    MOD     shift, and go to state 49
+    EQ      shift, and go to state 50
+    NE      shift, and go to state 51
+    LT      shift, and go to state 52
+    GT      shift, and go to state 53
+    LE      shift, and go to state 54
+    GE      shift, and go to state 55
+
+
+state 60
+
+   17 assignment: ID ASSIGN expression . SEMICOLON
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    SEMICOLON  shift, and go to state 77
+    PLUS       shift, and go to state 45
+    MINUS      shift, and go to state 46
+    MULT       shift, and go to state 47
+    DIV        shift, and go to state 48
+    MOD        shift, and go to state 49
+    EQ         shift, and go to state 50
+    NE         shift, and go to state 51
+    LT         shift, and go to state 52
+    GT         shift, and go to state 53
+    LE         shift, and go to state 54
+    GE         shift, and go to state 55
+
+
+state 61
+
+   15 declaration: TREAT ID ASSIGN expression . SEMICOLON
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    SEMICOLON  shift, and go to state 78
+    PLUS       shift, and go to state 45
+    MINUS      shift, and go to state 46
+    MULT       shift, and go to state 47
+    DIV        shift, and go to state 48
+    MOD        shift, and go to state 49
+    EQ         shift, and go to state 50
+    NE         shift, and go to state 51
+    LT         shift, and go to state 52
+    GT         shift, and go to state 53
+    LE         shift, and go to state 54
+    GE         shift, and go to state 55
+
+
+state 62
+
+   43 expression: LPAREN expression RPAREN .
+
+    $default  reduce using rule 43 (expression)
+
+
+state 63
+
+   32 expression: expression . PLUS expression
+   32           | expression PLUS expression .
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    MULT  shift, and go to state 47
+    DIV   shift, and go to state 48
+    MOD   shift, and go to state 49
+
+    $default  reduce using rule 32 (expression)
+
+
+state 64
+
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   33           | expression MINUS expression .
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    MULT  shift, and go to state 47
+    DIV   shift, and go to state 48
+    MOD   shift, and go to state 49
+
+    $default  reduce using rule 33 (expression)
+
+
+state 65
+
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   34           | expression MULT expression .
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    $default  reduce using rule 34 (expression)
+
+
+state 66
+
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   35           | expression DIV expression .
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    $default  reduce using rule 35 (expression)
+
+
+state 67
+
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   36           | expression MOD expression .
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    $default  reduce using rule 36 (expression)
+
+
+state 68
+
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   37           | expression EQ expression .
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    PLUS   shift, and go to state 45
+    MINUS  shift, and go to state 46
+    MULT   shift, and go to state 47
+    DIV    shift, and go to state 48
+    MOD    shift, and go to state 49
+    LT     shift, and go to state 52
+    GT     shift, and go to state 53
+    LE     shift, and go to state 54
+    GE     shift, and go to state 55
+
+    $default  reduce using rule 37 (expression)
+
+
+state 69
+
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   38           | expression NE expression .
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    PLUS   shift, and go to state 45
+    MINUS  shift, and go to state 46
+    MULT   shift, and go to state 47
+    DIV    shift, and go to state 48
+    MOD    shift, and go to state 49
+    LT     shift, and go to state 52
+    GT     shift, and go to state 53
+    LE     shift, and go to state 54
+    GE     shift, and go to state 55
+
+    $default  reduce using rule 38 (expression)
+
+
+state 70
+
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   39           | expression LT expression .
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    PLUS   shift, and go to state 45
+    MINUS  shift, and go to state 46
+    MULT   shift, and go to state 47
+    DIV    shift, and go to state 48
+    MOD    shift, and go to state 49
+
+    $default  reduce using rule 39 (expression)
+
+
+state 71
+
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   40           | expression GT expression .
+   41           | expression . LE expression
+   42           | expression . GE expression
+
+    PLUS   shift, and go to state 45
+    MINUS  shift, and go to state 46
+    MULT   shift, and go to state 47
+    DIV    shift, and go to state 48
+    MOD    shift, and go to state 49
+
+    $default  reduce using rule 40 (expression)
+
+
+state 72
+
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   41           | expression LE expression .
+   42           | expression . GE expression
+
+    PLUS   shift, and go to state 45
+    MINUS  shift, and go to state 46
+    MULT   shift, and go to state 47
+    DIV    shift, and go to state 48
+    MOD    shift, and go to state 49
+
+    $default  reduce using rule 41 (expression)
+
+
+state 73
+
+   32 expression: expression . PLUS expression
+   33           | expression . MINUS expression
+   34           | expression . MULT expression
+   35           | expression . DIV expression
+   36           | expression . MOD expression
+   37           | expression . EQ expression
+   38           | expression . NE expression
+   39           | expression . LT expression
+   40           | expression . GT expression
+   41           | expression . LE expression
+   42           | expression . GE expression
+   42           | expression GE expression .
+
+    PLUS   shift, and go to state 45
+    MINUS  shift, and go to state 46
+    MULT   shift, and go to state 47
+    DIV    shift, and go to state 48
+    MOD    shift, and go to state 49
+
+    $default  reduce using rule 42 (expression)
+
+
+state 74
+
+   22 loop_stmt: CHASE LPAREN expression RPAREN . @2 LBRACE statement_list RBRACE
+
+    $default  reduce using rule 21 (@2)
+
+    @2  go to state 79
+
+
+state 75
+
+   24 repeat_stmt: REPEAT expression TIMES @3 . LBRACE statement_list RBRACE
+
+    LBRACE  shift, and go to state 80
+
+
+state 76
+
+   26 if_stmt: IF LPAREN expression RPAREN . LBRACE @4 statement_list RBRACE else_part
+
+    LBRACE  shift, and go to state 81
+
+
+state 77
+
+   17 assignment: ID ASSIGN expression SEMICOLON .
+
+    $default  reduce using rule 17 (assignment)
+
+
+state 78
+
+   15 declaration: TREAT ID ASSIGN expression SEMICOLON .
+
+    $default  reduce using rule 15 (declaration)
+
+
+state 79
+
+   22 loop_stmt: CHASE LPAREN expression RPAREN @2 . LBRACE statement_list RBRACE
+
+    LBRACE  shift, and go to state 82
+
+
+state 80
+
+   24 repeat_stmt: REPEAT expression TIMES @3 LBRACE . statement_list RBRACE
+
+    $default  reduce using rule 4 (statement_list)
+
+    statement_list  go to state 83
+
+
+state 81
+
+   26 if_stmt: IF LPAREN expression RPAREN LBRACE . @4 statement_list RBRACE else_part
+
+    $default  reduce using rule 25 (@4)
+
+    @4  go to state 84
+
+
+state 82
+
+   22 loop_stmt: CHASE LPAREN expression RPAREN @2 LBRACE . statement_list RBRACE
+
+    $default  reduce using rule 4 (statement_list)
+
+    statement_list  go to state 85
+
+
+state 83
+
+    5 statement_list: statement_list . statement
+   24 repeat_stmt: REPEAT expression TIMES @3 LBRACE statement_list . RBRACE
+
+    error   shift, and go to state 10
+    TREAT   shift, and go to state 11
+    BARK    shift, and go to state 12
+    HOWL    shift, and go to state 13
+    SIT     shift, and go to state 14
+    CHASE   shift, and go to state 15
+    REPEAT  shift, and go to state 16
+    IF      shift, and go to state 17
+    RBRACE  shift, and go to state 86
+    ID      shift, and go to state 19
+
+    statement    go to state 20
+    declaration  go to state 21
+    assignment   go to state 22
+    print_stmt   go to state 23
+    error_stmt   go to state 24
+    wait_stmt    go to state 25
+    loop_stmt    go to state 26
+    repeat_stmt  go to state 27
+    if_stmt      go to state 28
+
+
+state 84
+
+   26 if_stmt: IF LPAREN expression RPAREN LBRACE @4 . statement_list RBRACE else_part
+
+    $default  reduce using rule 4 (statement_list)
+
+    statement_list  go to state 87
+
+
+state 85
+
+    5 statement_list: statement_list . statement
+   22 loop_stmt: CHASE LPAREN expression RPAREN @2 LBRACE statement_list . RBRACE
+
+    error   shift, and go to state 10
+    TREAT   shift, and go to state 11
+    BARK    shift, and go to state 12
+    HOWL    shift, and go to state 13
+    SIT     shift, and go to state 14
+    CHASE   shift, and go to state 15
+    REPEAT  shift, and go to state 16
+    IF      shift, and go to state 17
+    RBRACE  shift, and go to state 88
+    ID      shift, and go to state 19
+
+    statement    go to state 20
+    declaration  go to state 21
+    assignment   go to state 22
+    print_stmt   go to state 23
+    error_stmt   go to state 24
+    wait_stmt    go to state 25
+    loop_stmt    go to state 26
+    repeat_stmt  go to state 27
+    if_stmt      go to state 28
+
+
+state 86
+
+   24 repeat_stmt: REPEAT expression TIMES @3 LBRACE statement_list RBRACE .
+
+    $default  reduce using rule 24 (repeat_stmt)
+
+
+state 87
+
+    5 statement_list: statement_list . statement
+   26 if_stmt: IF LPAREN expression RPAREN LBRACE @4 statement_list . RBRACE else_part
+
+    error   shift, and go to state 10
+    TREAT   shift, and go to state 11
+    BARK    shift, and go to state 12
+    HOWL    shift, and go to state 13
+    SIT     shift, and go to state 14
+    CHASE   shift, and go to state 15
+    REPEAT  shift, and go to state 16
+    IF      shift, and go to state 17
+    RBRACE  shift, and go to state 89
+    ID      shift, and go to state 19
+
+    statement    go to state 20
+    declaration  go to state 21
+    assignment   go to state 22
+    print_stmt   go to state 23
+    error_stmt   go to state 24
+    wait_stmt    go to state 25
+    loop_stmt    go to state 26
+    repeat_stmt  go to state 27
+    if_stmt      go to state 28
+
+
+state 88
+
+   22 loop_stmt: CHASE LPAREN expression RPAREN @2 LBRACE statement_list RBRACE .
+
+    $default  reduce using rule 22 (loop_stmt)
+
+
+state 89
+
+   26 if_stmt: IF LPAREN expression RPAREN LBRACE @4 statement_list RBRACE . else_part
+
+    ELSE  shift, and go to state 90
+
+    $default  reduce using rule 27 (else_part)
+
+    else_part  go to state 91
+
+
+state 90
+
+   29 else_part: ELSE . LBRACE @5 statement_list RBRACE
+
+    LBRACE  shift, and go to state 92
+
+
+state 91
+
+   26 if_stmt: IF LPAREN expression RPAREN LBRACE @4 statement_list RBRACE else_part .
+
+    $default  reduce using rule 26 (if_stmt)
+
+
+state 92
+
+   29 else_part: ELSE LBRACE . @5 statement_list RBRACE
+
+    $default  reduce using rule 28 (@5)
+
+    @5  go to state 93
+
+
+state 93
+
+   29 else_part: ELSE LBRACE @5 . statement_list RBRACE
+
+    $default  reduce using rule 4 (statement_list)
+
+    statement_list  go to state 94
+
+
+state 94
+
+    5 statement_list: statement_list . statement
+   29 else_part: ELSE LBRACE @5 statement_list . RBRACE
+
+    error   shift, and go to state 10
+    TREAT   shift, and go to state 11
+    BARK    shift, and go to state 12
+    HOWL    shift, and go to state 13
+    SIT     shift, and go to state 14
+    CHASE   shift, and go to state 15
+    REPEAT  shift, and go to state 16
+    IF      shift, and go to state 17
+    RBRACE  shift, and go to state 95
+    ID      shift, and go to state 19
+
+    statement    go to state 20
+    declaration  go to state 21
+    assignment   go to state 22
+    print_stmt   go to state 23
+    error_stmt   go to state 24
+    wait_stmt    go to state 25
+    loop_stmt    go to state 26
+    repeat_stmt  go to state 27
+    if_stmt      go to state 28
+
+
+state 95
+
+   29 else_part: ELSE LBRACE @5 statement_list RBRACE .
+
+    $default  reduce using rule 29 (else_part)

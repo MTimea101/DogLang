@@ -1,0 +1,12 @@
+DOG Buddy {
+    TREAT bones = 5;
+    
+    // Hiba: újradeklarálás
+    TREAT bones = 10;
+    
+    // Hiba: nem deklarált változó használata
+    BARK energy;
+    
+    // Hiba: nem deklarált változó értékadás
+    toys = 3;
+}
